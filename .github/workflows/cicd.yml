@@ -12,7 +12,7 @@ on:
 jobs:
   test-build:
     name: Test & Build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,5 +26,7 @@ jobs:
       # TODO: Complete the steps in CICD.md
       - name: test step
         run: npm run test
+      - name: build step
+        run: npm run build
         env:
-          VITE_APP_PUBLIC_URL: /example-react-cicd
+          VITE_APP_PUBLIC_URL: ${{ github.repository }}
