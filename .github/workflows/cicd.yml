@@ -10,8 +10,8 @@ on:
       - main
 
 jobs:
-  test-build:
-    name: Test & Build
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,25 +24,17 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm run test
-      - name: Build
+      # - name: Build
+      #   run: npm run build
+      #   env:
+      #     VITE_APP_PUBLIC_URL: ${{ github.repository }}
+
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: build step
         run: npm run build
         env:
           VITE_APP_PUBLIC_URL: ${{ github.repository }}
-
-  # test:
-  #   name: Test
-  #   needs: test-build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: run test
-  #       run: npm run test
-
-  # build:
-  #   name: Build
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: build step
-  #       run: npm run build
-  #       env:
-  #         VITE_APP_PUBLIC_URL: ${{ github.repository }}
