@@ -46,7 +46,7 @@ jobs:
         run: npm run build
         env:
           VITE_APP_PUBLIC_URL: ${{ github.repository }}
-      - name: Upload artifact
+      - name: artifact
         uses: actions/upload-artifact@v2
         with:
           name: dist
@@ -61,7 +61,7 @@ jobs:
       - name: downloading artifact
         uses: actions/download-artifact@v2
         with:
-          name: dist
+          name: artifact
           path: ./dist
       - name: deploy intto gh-pages
         uses: peaceiris/actions-gh-pages@v3
