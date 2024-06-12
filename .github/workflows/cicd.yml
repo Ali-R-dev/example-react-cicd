@@ -23,9 +23,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # TODO: Complete the steps in CICD.md
-      - name: test step
+  test:
+    name: Test
+    needs: test-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: run test
         run: npm run test
+
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
       - name: build step
         run: npm run build
         env:
