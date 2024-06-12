@@ -45,7 +45,7 @@ jobs:
       - name: build step
         run: npm run build
         env:
-          VITE_APP_PUBLIC_URL: ${{ github.repository }}
+          VITE_APP_PUBLIC_URL: /example-react-cicd/
       - name: artifact
         uses: actions/upload-artifact@v2
         with:
