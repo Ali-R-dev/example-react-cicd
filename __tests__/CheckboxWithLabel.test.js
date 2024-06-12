@@ -18,10 +18,12 @@ afterEach(cleanup);
 */
 test('REPLACE_ME', () => {
   // 1. Arrange: render checkbox and store the component as a var, so you can refer to it later.
-
+  const {getByLabelText} = render(<CheckboxWithLabel labelOn="on" labelOff="off"/>)
   // 2. Assert: check that checkbox is initially off. You can do something like 'checkbox.checked' to check its value
-
+  expect(getByLabelText("off").checked).toBe(false);
   // 3. Act: click on the checkbox using FireEvent
-
+  fireEvent.click(getByLabelText("off"))
   // 4. Assert: check that the checkbox is now clicked and that the label has changed to "on"!
+  expect(getByLabelText("on").checked).toBe(true);
+
 });
