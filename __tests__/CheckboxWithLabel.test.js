@@ -24,6 +24,6 @@ test('REPLACE_ME', () => {
   // 3. Act: click on the checkbox using FireEvent
   fireEvent.click(getByLabelText("off"))
   // 4. Assert: check that the checkbox is now clicked and that the label has changed to "on"!
-  expect(getByLabelText("on").checked).toBe(false);
+  expect(getByLabelText("on").checked).toBe(true);
 
 });
